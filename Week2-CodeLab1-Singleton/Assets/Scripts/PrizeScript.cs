@@ -11,7 +11,7 @@ public class PrizeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        targetScore = PlayerController.instance.score * 2 + 5;
+        targetScore = PlayerController.instance.score * 2 + 5; //increase the target score every level
     }
 
     // Update is called once per frame
@@ -22,14 +22,14 @@ public class PrizeScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) //If another GameObject with a 2D Collider on it hits this GameObject's collider
     {
-        PlayerController.instance.score++;
-        Debug.Log("Score: " + PlayerController.instance.score);
+        PlayerController.instance.score++; //increase the player's score using the Singleton!
+        Debug.Log("Score: " + PlayerController.instance.score); //print the score to console, using the Singleton
         transform.position = new Vector2(Random.Range(-6, 6), Random.Range(-4, 4)); //teleport to a random location
 
-        if(PlayerController.instance.score > targetScore)
+        if(PlayerController.instance.score > targetScore) //if the current score >  the targetScore
         {
-            currentLevel++;
-            SceneManager.LoadScene(currentLevel);
+            currentLevel++; //increate the level number
+            SceneManager.LoadScene(currentLevel); //go to the next level
         }
     }
 }

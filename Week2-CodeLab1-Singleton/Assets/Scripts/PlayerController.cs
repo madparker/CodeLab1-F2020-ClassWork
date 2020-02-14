@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb; //var for the Rigidbody2D
 
-    public static PlayerController instance;
+	//static variable means the value is the same for all the objects of this class type and the class itself
+    public static PlayerController instance; //this static var will hold the Singleton
 
     private void Awake()
     {
