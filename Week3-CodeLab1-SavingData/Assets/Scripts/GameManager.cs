@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
     private const string PLAY_PREF_KEY_HS = "High Score";
     private const string PLAY_PREF_KEY_P1_HS = "P1 HIGH SCORE";
 
+    private const string FILE_HS = "/CodeLab1-S2020-highscore.txt";
+    private const string FILE_ALL_SCORES = "/All_scores.txt";
+
     //Property
     public int Score{
         get{
@@ -30,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int highScore = 5;
+    private int highScore = 0;
 
     private int HighScore{
         get{
@@ -39,9 +43,21 @@ public class GameManager : MonoBehaviour
         set{
             highScore = value;
             //Save it somewhere
-            PlayerPrefs.SetInt(PLAY_PREF_KEY_HS, highScore);
+            //PlayerPrefs.SetInt(PLAY_PREF_KEY_HS, highScore);
+            File.WriteAllText(Application.dataPath + FILE_HS, highScore + "");
+        
+
+            allScores.Add(highScore);
+
+            string allScoreString = "";
+            for (int i = 0; i < allScores.Count; i++){
+                allScoreString = allScoreString + allScores[i] + ",";
+            }
+            File.WriteAllText(Application.dataPath + FILE_ALL_SCORES, allScoreString);
         }
     }
+
+    private List<int> allScores = new List<int>();
 
     private void Awake()
     {
@@ -56,9 +72,23 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(Application.dataPath);
+
         infoText = GetComponentInChildren<Text>(); //get the text component from the children of this gameObject
-        highScore = PlayerPrefs.GetInt(PLAY_PREF_KEY_HS, 5);
-    }
+        //highScore = PlayerPrefs.GetInt(PLAY_PREF_KEY_HS, 5);
+        if (File.Exists(Application.dataPath + FILE_HS))
+        {
+            string hsString = File.ReadAllText(Application.dataPath + FILE_HS);
+
+            print(hsString);
+            string[] splitString = hsString.Split(',');
+            highScore = int.Parse(splitString[0]);
+
+            for (int i = 0; i < splitString.Length; i++){
+                print(splitString[i]);
+            }
+        }
+    }   
 
     // Update is called once per frame
     void Update()
