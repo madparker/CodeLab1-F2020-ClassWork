@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HighScores : MonoBehaviour
 {
@@ -16,12 +17,14 @@ public class HighScores : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string displayText = highScoreTemplate.Replace("<score>", GameManager.instance.Score + "");
+        GameManager.instance.UpdateHighScores();
+
+        string displayText = highScoreTemplate.Replace("<score>", GameManager.instance.timer + "");
 
         string highScoreString = "";
 
         List<string> hsNames = GameManager.instance.highScoreNames;
-        List<int> hsNums     = GameManager.instance.highScoreNums;
+        List<float>  hsNums  = GameManager.instance.highScoreNums;
 
         for (int i = 0; i < hsNames.Count; i++){
             highScoreString += hsNames[i] + " " + hsNums[i] + "\n";
@@ -37,6 +40,9 @@ public class HighScores : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKey(KeyCode.Space)){
+            GameManager.instance.Reset();
+            SceneManager.LoadScene("Level1");
+        }
     }
 }

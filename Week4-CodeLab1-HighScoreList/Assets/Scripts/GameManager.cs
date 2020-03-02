@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
 
     public Text infoText; //Text Component to tell you the time and the score
 
-    private float timer = 0; //keep track of time
+    private const string FILE_HS_LIST = "/high_score.txt";
+
+    public float timer = 0; //keep track of time
+
+    public bool playing = true;
 
     private int score = 0;
     //Property for score
@@ -27,7 +31,7 @@ public class GameManager : MonoBehaviour
     }
 
     public List<string> highScoreNames;
-    public List<int>    highScoreNums;
+    public List<float>  highScoreNums;
 
     private void Awake()
     {
@@ -43,11 +47,27 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         highScoreNames = new List<string>();
-        highScoreNums  = new List<int>();
+        highScoreNums  = new List<float>();
 
-        for (int i = 0; i < 10; i++){
-            highScoreNames.Add("DAM");
-            highScoreNums.Add(100 + i * 10);
+        if (File.Exists(Application.dataPath + FILE_HS_LIST))
+        {
+            string fileContents = File.ReadAllText(Application.dataPath + FILE_HS_LIST);
+
+            string[] scorePairs = fileContents.Split('\n');
+
+            for (int i = 0; i < 10; i++){
+                string[] nameScores = scorePairs[i].Split(' ');
+                highScoreNames.Add(nameScores[0]);
+                highScoreNums.Add(float.Parse(nameScores[1]));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                highScoreNames.Add("DAM");
+                highScoreNums.Add(100 + i * 10);
+            }
         }
 
         Debug.Log(Application.dataPath);
@@ -59,6 +79,40 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime; //increase the timer by deltaTime every frame
-        infoText.text = "Score: " + GameManager.instance.score + " Time: " + (int)timer; //update the text component with the score and time
+        infoText.text = "Score: " + score + " Time: " + (int)timer; //update the text component with the score and time
+    }
+
+    public void UpdateHighScores(){
+
+        bool newScore = false; //by default, we don't have new high score
+
+        for (int i = 0; i < highScoreNums.Count; i++){
+            if(highScoreNums[i] > timer){
+                highScoreNums.Insert(i, timer);
+                highScoreNames.Insert(i, "NEW");
+                newScore = true; //we have a new high score
+                break;
+            }
+        }
+
+        if(newScore){ //if we have a new high score
+            highScoreNums.RemoveAt(highScoreNums.Count - 1);
+            highScoreNames.RemoveAt(10);
+        }
+
+        string fileContents = "";
+
+        for (int i = 0; i < highScoreNames.Count; i++){
+            fileContents += highScoreNames[i] + " " + highScoreNums[i] + "\n";
+        }
+
+        File.WriteAllText(Application.dataPath + FILE_HS_LIST, fileContents);
+    }
+
+    public void Reset()
+    {
+        timer = 0;
+        score = 0;
+        PrizeScript.currentLevel = 0;
     }
 }
