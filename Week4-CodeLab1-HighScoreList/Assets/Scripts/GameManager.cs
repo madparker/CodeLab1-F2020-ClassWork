@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public List<string> highScoreNames;
+    public List<int>    highScoreNums;
+
     private void Awake()
     {
         if(instance == null){ //instance hasn't been set yet
@@ -39,6 +42,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        highScoreNames = new List<string>();
+        highScoreNums  = new List<int>();
+
+        for (int i = 0; i < 10; i++){
+            highScoreNames.Add("DAM");
+            highScoreNums.Add(100 + i * 10);
+        }
+
         Debug.Log(Application.dataPath);
 
         infoText = GetComponentInChildren<Text>(); //get the text component from the children of this gameObject
