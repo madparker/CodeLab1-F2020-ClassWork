@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public List<string> highScoreNames;
-    public List<float>  highScoreNums;
+    public List<string> highScoreNames; //list of high score names
+    public List<float>  highScoreNums;  //list of high score values
 
     private void Awake()
     {
@@ -46,24 +46,24 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highScoreNames = new List<string>();
-        highScoreNums  = new List<float>();
+        highScoreNames = new List<string>(); //init highScoreNames
+        highScoreNums  = new List<float>();  //init highScoreNums
 
-        if (File.Exists(Application.dataPath + FILE_HS_LIST))
+        if (File.Exists(Application.dataPath + FILE_HS_LIST)) //if the high score file exists
         {
-            string fileContents = File.ReadAllText(Application.dataPath + FILE_HS_LIST);
+            string fileContents = File.ReadAllText(Application.dataPath + FILE_HS_LIST); //get the contents of the file
 
-            string[] scorePairs = fileContents.Split('\n');
+            string[] scorePairs = fileContents.Split('\n'); //split it on the newline, making each space in the array a line in the file
 
-            for (int i = 0; i < 10; i++){
-                string[] nameScores = scorePairs[i].Split(' ');
-                highScoreNames.Add(nameScores[0]);
-                highScoreNums.Add(float.Parse(nameScores[1]));
+            for (int i = 0; i < 10; i++){ //loop through the 10 scores
+                string[] nameScores = scorePairs[i].Split(' '); //split each line on the space
+                highScoreNames.Add(nameScores[0]); //the first part of the split is the name
+                highScoreNums.Add(float.Parse(nameScores[1])); //the second part is the value
             }
         }
-        else
+        else //if the high score file doesn't exist
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++) //create a new default high score list
             {
                 highScoreNames.Add("DAM");
                 highScoreNums.Add(100 + i * 10);
@@ -82,33 +82,35 @@ public class GameManager : MonoBehaviour
         infoText.text = "Score: " + score + " Time: " + (int)timer; //update the text component with the score and time
     }
 
+    //function that updates the high score list
     public void UpdateHighScores(){
 
         bool newScore = false; //by default, we don't have new high score
 
-        for (int i = 0; i < highScoreNums.Count; i++){
-            if(highScoreNums[i] > timer){
-                highScoreNums.Insert(i, timer);
-                highScoreNames.Insert(i, "NEW");
+        for (int i = 0; i < highScoreNums.Count; i++){ //go through all the high scores
+            if(highScoreNums[i] > timer){ //if we have a time that is lower than one of the high scores
+                highScoreNums.Insert(i, timer); //insert this new score into the value list
+                highScoreNames.Insert(i, "NEW"); //give it the name "NEW"
                 newScore = true; //we have a new high score
-                break;
+                break; //leave the for loop
             }
         }
 
         if(newScore){ //if we have a new high score
-            highScoreNums.RemoveAt(highScoreNums.Count - 1);
+            highScoreNums.RemoveAt(highScoreNums.Count - 1); //remove the final high score value so we are back down to 10
             highScoreNames.RemoveAt(10);
         }
 
-        string fileContents = "";
+        string fileContents = ""; //create a new string to insert into the file
 
-        for (int i = 0; i < highScoreNames.Count; i++){
-            fileContents += highScoreNames[i] + " " + highScoreNums[i] + "\n";
+        for (int i = 0; i < highScoreNames.Count; i++){ //loop through all the high scores
+            fileContents += highScoreNames[i] + " " + highScoreNums[i] + "\n"; //build a string for all the high scores in the lists
         }
 
-        File.WriteAllText(Application.dataPath + FILE_HS_LIST, fileContents);
+        File.WriteAllText(Application.dataPath + FILE_HS_LIST, fileContents); //save the list to the file
     }
 
+    //reset the important values when the game restarts
     public void Reset()
     {
         timer = 0;
