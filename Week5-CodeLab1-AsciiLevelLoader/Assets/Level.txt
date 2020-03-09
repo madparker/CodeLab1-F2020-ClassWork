@@ -5,6 +5,6 @@ xxxxxxx----x
 xxxxxxx----x
 xxxxx-----xx
 xxx--P---x-x
-xx------x--x
+x-------x--x
 x------x---x
 xxxxxxxxxxxx

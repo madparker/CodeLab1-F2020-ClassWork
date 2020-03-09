@@ -151,6 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 8079054265634153850, guid: 59afab3f45ed4401d8174b58a4d966f2, type: 3}
+  player: {fileID: 3555568123929274798, guid: 2f13d63ff74804f9087a39300a16bd2d, type: 3}
+  xOffset: -5
+  yOffset: 5
+  FILE_LEVEL: Level.txt
 --- !u!4 &183687634
 Transform:
   m_ObjectHideFlags: 0

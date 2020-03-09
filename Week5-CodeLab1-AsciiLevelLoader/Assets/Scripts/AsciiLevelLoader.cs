@@ -11,12 +11,12 @@ public class AsciiLevelLoader : MonoBehaviour
     public float xOffset = -5;
     public float yOffset = 5;
 
-    const string FILE_LEVEL = "/Level.txt"; 
+    public string fileLevel = "Level.txt"; 
 
     // Start is called before the first frame update
     void Start()
     {
-        string fullFilePath = Application.dataPath + FILE_LEVEL;
+        string fullFilePath = Application.dataPath + "/" + fileLevel;
 
         print("Full file path: " + fullFilePath);
 
@@ -36,6 +36,12 @@ public class AsciiLevelLoader : MonoBehaviour
                 if(characters[x] == 'x'){
                     GameObject newWall = Instantiate<GameObject>(wall);
                     newWall.transform.position = 
+                        new Vector2(x + xOffset, -y + yOffset);
+                }
+
+                if(characters[x] == 'P'){
+                    GameObject newPlayer = Instantiate<GameObject>(player);
+                    newPlayer.transform.position =
                         new Vector2(x + xOffset, -y + yOffset);
                 }
             }
