@@ -7,6 +7,7 @@ public class AsciiLevelLoader : MonoBehaviour
 {
     public GameObject wall;
     public GameObject player;
+    public GameObject prize;
 
     public float xOffset = -5;
     public float yOffset = 5;
@@ -25,6 +26,9 @@ public class AsciiLevelLoader : MonoBehaviour
         //lines will be an array of strings, with each line in a different slot
         string[] lines = File.ReadAllLines(fullFilePath);
 
+        //Make a GameObject to hold all the walls to make the inspector cleaner
+        GameObject wallHolder = new GameObject("Wall Holder");
+
         //go through all the lines
         for (int y = 0; y < lines.Length; y++){
             string line = lines[y]; //get each line
@@ -33,16 +37,29 @@ public class AsciiLevelLoader : MonoBehaviour
 
             //go through each character on the current line
             for (int x = 0; x < characters.Length; x++){
-                if(characters[x] == 'x'){
-                    GameObject newWall = Instantiate<GameObject>(wall);
-                    newWall.transform.position = 
-                        new Vector2(x + xOffset, -y + yOffset);
-                }
+                GameObject newObject;
 
-                if(characters[x] == 'P'){
-                    GameObject newPlayer = Instantiate<GameObject>(player);
-                    newPlayer.transform.position =
-                        new Vector2(x + xOffset, -y + yOffset);
+                switch(characters[x])
+                {
+                    case 'x':
+                        newObject = Instantiate<GameObject>(wall);
+                        newObject.transform.SetParent(wallHolder.transform); //make the parent of th new wall, Wall Holder
+                        newObject.transform.position =
+                                new Vector2(x + xOffset, -y + yOffset);
+                        break;
+                    case 'P':
+                        newObject = Instantiate<GameObject>(player);
+                        newObject.transform.position =
+                                new Vector2(x + xOffset, -y + yOffset);
+                        break;
+                    case '*':
+                        newObject = Instantiate<GameObject>(prize);
+                        newObject.transform.position =
+                                     new Vector2(x + xOffset, -y + yOffset);
+                        break;
+                    default:
+                        print("empty");
+                        break;
                 }
             }
         }

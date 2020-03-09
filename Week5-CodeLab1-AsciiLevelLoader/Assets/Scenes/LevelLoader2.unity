@@ -152,9 +152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: {fileID: 8079054265634153850, guid: 59afab3f45ed4401d8174b58a4d966f2, type: 3}
   player: {fileID: 3555568123929274798, guid: 2f13d63ff74804f9087a39300a16bd2d, type: 3}
-  xOffset: -5
+  prize: {fileID: 1580660507706016101, guid: 94aae6fdabd824f40bcb26dbc40740ac, type: 3}
+  xOffset: -10
   yOffset: 5
-  fileLevel: Level.txt
+  fileLevel: Level2.txt
 --- !u!4 &183687634
 Transform:
   m_ObjectHideFlags: 0
