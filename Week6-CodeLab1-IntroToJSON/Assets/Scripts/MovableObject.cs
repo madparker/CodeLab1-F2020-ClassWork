@@ -51,6 +51,6 @@ public class MovableObject : MonoBehaviour {
     private void OnApplicationQuit()
     {
         string pos = JsonUtility.ToJson(transform.position, true);
-        File.WriteAllText(Application.dataPath + "/" + name + ".json", pos);
+        File.WriteAllText(filePath, pos);
     }
 }
