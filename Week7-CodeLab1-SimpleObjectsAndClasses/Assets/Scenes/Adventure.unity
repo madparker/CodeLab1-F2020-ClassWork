@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1269,10 +1270,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'This is where you will see the text about each place in the woods you go.
-    It''s long. I''ll add some characters to show how big it is. jkhsdjk dsf dsfhkjdfsjk
-    dsf jkdfsjkhdfsjk sd kdskfjhfkd sd dfshjkfdskjh dsfsd  sdfjkhsdjhsd fshdfkjsfdhkdfsj
-    sdjhfsk jf sjkddkkhkdsf sdfhksfhkks fsdf sf d dfsfd  dfs df fd dfs fds fd df '
+  m_Text: 'This is where you will see the text about each place in the woods you
+    go. It''s long. I''ll add some characters to show how big it is. jkhsdjk dsf
+    dsfhkjdfsjk dsf jkdfsjkhdfsjk sd kdskfjhfkd sd dfshjkfdskjh dsfsd  sdfjkhsdjhsd
+    fshdfkjsfdhkdfsj sdjhfsk jf sjkddkkhkdsf sdfhksfhkks fsdf sf d dfsfd  dfs df
+    fd dfs fds fd df '
 --- !u!222 &1724945122
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1316,7 +1318,7 @@ MonoBehaviour:
   sButton: {fileID: 1160565805}
   eButton: {fileID: 387144485}
   wButton: {fileID: 1711683253}
-  numLocations: 6
+  numLocations: 5
 --- !u!4 &1900014911
 Transform:
   m_ObjectHideFlags: 0
