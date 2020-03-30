@@ -50,7 +50,7 @@ public class MovableObject : MonoBehaviour {
 
     private void OnApplicationQuit()
     {
-        string pos = JsonUtility.ToJson(transform.position, true);
-        File.WriteAllText(filePath, pos);
+        string jsonPos = JsonUtility.ToJson(transform.position, true);
+        File.WriteAllText(filePath, jsonPos);
     }
 }

@@ -1,0 +1,8 @@
+﻿{
+    "title": "Drive Way",
+  "description": "You stand in the empty DRIVE WAY. Where's the car?\n\nThe HOUSE is to the EAST.\nThe SIDE YARD is to the WEST.",
+    "nLocation": -1,
+    "sLocation": -1,
+    "eLocation": 0,
+    "wLocation": 4
+}
