@@ -6,32 +6,33 @@ using UnityEngine.UI;
 
 public class DirectionManager : MonoBehaviour
 {
-    public Text title;
-    public Text description;
+    public Text title; //holds ui title
+    public Text description;  //holds ui description
 
-    public Button nButton;
-    public Button sButton;
-    public Button eButton;
-    public Button wButton;
+    public Button nButton;  //north 
+    public Button sButton;  //south
+    public Button eButton;  //east
+    public Button wButton;  //west
 
-    public int numLocations;
+    public int numLocations; 
 
-    public Location currentLocation;
+    public Location currentLocation; //the current location
 
-    public Location[] locations;
+    public Location[] locations; //array of all the locations
 
-    string filePath = "/Files/Location<num>.json";
+    string filePath = "/Files/Location<num>.json"; //default path to location files
 
+    //once at the start
     void Start()
     {
-        filePath = Application.dataPath + filePath;
+        filePath = Application.dataPath + filePath; //full path to files
 
-        locations = new Location[numLocations];
+        locations = new Location[numLocations]; //init array to have numLocation slots
 
-        for (int i = 0; i < locations.Length; i++){
-            string locPath = filePath.Replace("<num>", "" + i);
+        for (int i = 0; i < locations.Length; i++){ //0 to locations.Length
+            string locPath = filePath.Replace("<num>", "" + i); //creating a path to file num "i"
 
-            string fileContent = File.ReadAllText(locPath);
+            string fileContent = File.ReadAllText(locPath); //fileContent will hold all the text from the file at locPath
 
             Location l = JsonUtility.FromJson<Location>(fileContent);
 

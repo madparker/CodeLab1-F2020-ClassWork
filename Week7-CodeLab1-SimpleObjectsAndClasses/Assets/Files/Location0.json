@@ -1,6 +1,6 @@
 ﻿{
     "title": "The House",
-  "description": "The HOUSE you are staying in. Not exactly home, but close enough for now.\n\nNORTH of you is the FRONT YARD.\nSOUTH leads to BEHIND THE HOUSE.\nTo the WEST is the DRIVE WAY.",
+    "description": "The HOUSE you are staying in. Not exactly home, but close enough for now.\n\nNORTH of you is the FRONT YARD.\nSOUTH leads to BEHIND THE HOUSE.\nTo the WEST is the DRIVE WAY.",
     "nLocation": 1,
     "sLocation": 3,
     "eLocation": -1,
