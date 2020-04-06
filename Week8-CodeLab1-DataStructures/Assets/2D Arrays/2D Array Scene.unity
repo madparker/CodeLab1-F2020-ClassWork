@@ -1150,7 +1150,14 @@ MonoBehaviour:
   width: 7
   height: 6
   display: {fileID: 2047184998}
-  columnButtons: []
+  columnButtons:
+  - {fileID: 928279124}
+  - {fileID: 504236080}
+  - {fileID: 1271257946}
+  - {fileID: 2101540494}
+  - {fileID: 2139665511}
+  - {fileID: 170139325}
+  - {fileID: 1777779443}
   redPrefab: {fileID: 7670969413922050435, guid: 5376aa0e3e1384dc5af35f44ed705a7a,
     type: 3}
   bluePrefab: {fileID: 2629735114494249905, guid: 3ff34d303cbfb41fd896fd9157683a77,
