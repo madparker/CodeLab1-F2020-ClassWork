@@ -12,12 +12,10 @@ public class SimpleConnectionGame : MonoBehaviour
     public int width = 7;
     public int height = 6;
     
-    private int[,] grid;
+    private int[,] grid; // 0 be an empty space, 1 be blue, and 2 be red
 
     public Text display;
     
-    public Button[] columnButtons;
-
     private bool redTurn = false;
 
     private List<GameObject> spawnedPieces = new List<GameObject>();
@@ -85,7 +83,7 @@ public class SimpleConnectionGame : MonoBehaviour
         // Find the lowest empty space in the column, and add a piece.
         for (var y = 0; y < height; y++)
         {
-            if (grid[column, y] == 0)
+            if (IsEmpty(column, y))
             {
                 if (redTurn)
                     grid[column, y] = 2;
