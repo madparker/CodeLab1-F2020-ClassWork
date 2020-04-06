@@ -8,15 +8,6 @@ using UnityEngine.UI;
 
 public class DictionaryExample : MonoBehaviour
 {
-    // This enum contains the various resource types in the game.
-    public enum ResourceType
-    {
-        Gold,
-        Sparkles,
-        Gems,
-        Drongles
-    }
-
     public Text display;
 
     public void Update()
@@ -28,16 +19,18 @@ public class DictionaryExample : MonoBehaviour
     }
 
     // A dictionary to represent what resources they have.
-    private Dictionary<ResourceType, int> resourcesOwned = new Dictionary<ResourceType, int>();
+    private Dictionary<string, int> resourcesOwned = new Dictionary<string, int>();
     // A dictionary to represent what items they have.
     private Dictionary<string, int> itemsOwned = new Dictionary<string, int>();
 
     // This function adds a resource.
-    public void AddResource(ResourceType resourceType, int amountToAdd)
+    public void AddResource(string resourceType, int amountToAdd)
     {
         if (resourcesOwned.ContainsKey(resourceType))
         {
             resourcesOwned[resourceType] = resourcesOwned[resourceType] + amountToAdd;
+            
+            Debug.Log("You own " + resourcesOwned[resourceType] + " of " + resourceType);
         }
         else
         {
@@ -46,7 +39,7 @@ public class DictionaryExample : MonoBehaviour
     }
 
     // This function removes a resource
-    public bool RemoveResource(ResourceType resourceType, int cost)
+    public bool RemoveResource(string resourceType, int cost)
     {
         if (!HasEnoughResources(resourceType, cost))
         {
@@ -62,7 +55,7 @@ public class DictionaryExample : MonoBehaviour
     }
 
     // This function determines whether you have at least "amount" of a resource type
-    public bool HasEnoughResources(ResourceType resourceType, int amount)
+    public bool HasEnoughResources(string resourceType, int amount)
     {
         if (!resourcesOwned.ContainsKey(resourceType) || resourcesOwned[resourceType] < amount)
             return false;
@@ -70,29 +63,10 @@ public class DictionaryExample : MonoBehaviour
         return true;
     }
 
-    // This function is a helper to turn strings into enums
-    public ResourceType StringToResourceType(string resourceName)
-    {
-        switch (resourceName.ToUpper())
-        {
-            case "DRONGLES" :
-                return ResourceType.Drongles;
-            case "GEMS" :
-                return ResourceType.Gems;
-            case "SPARKLES" :
-                return ResourceType.Sparkles;
-            case "GOLD" :
-            default:
-                return ResourceType.Gold;
-        }
-    }
-
     // This function adds 10 of a resource - used in the buttons.
     public void AddResources(string resourceString)
     {
-        var resourceType = StringToResourceType(resourceString);
-
-        AddResource(resourceType, 10);
+        AddResource(resourceString, 10);
     }
 
     // Displays the owned resources
@@ -100,7 +74,7 @@ public class DictionaryExample : MonoBehaviour
     {
         display.text = "Owned Resources:\n";
 
-        foreach (var keyValuePair in resourcesOwned)
+        foreach (KeyValuePair<string, int> keyValuePair in resourcesOwned)
         {
             display.text += "\n" + keyValuePair.Key + " (" + resourcesOwned[keyValuePair.Key] + ")";
         }
@@ -125,16 +99,16 @@ public class DictionaryExample : MonoBehaviour
         switch (item.ToUpper())
         {
             case "APRICOT" :
-                successfulPurchase = RemoveResource(StringToResourceType("GOLD"), 20);
+                successfulPurchase = RemoveResource("GOLD", 20);
                 break;
             case "ORANGE" :
-                successfulPurchase = RemoveResource(StringToResourceType("GEMS"), 5);
+                successfulPurchase = RemoveResource("GEMS", 5);
                 break;
             case "GRUMPY FAIRY" :
-                successfulPurchase = RemoveResource(StringToResourceType("SPARKLES"), 20);
+                successfulPurchase = RemoveResource("SPARKLES", 20);
                 break;
             case "PRONGLE" :
-                successfulPurchase = RemoveResource(StringToResourceType("DRONGLES"), 1);
+                successfulPurchase = RemoveResource("DRONGLES", 1);
                 break;
         }
 

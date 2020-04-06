@@ -16,7 +16,6 @@ public class ListExample : MonoBehaviour
     {
         // Instantiate the list
         names = new List<string>();
-
         
         // The below code reads the text file and splits it into lines.
         var namesFromFile = textFileWithNames.text.Split('\n');
@@ -24,12 +23,35 @@ public class ListExample : MonoBehaviour
         // This code loops though every single line in the text file
         for (var i = 0; i < namesFromFile.Length; i++)
         {
-            // If there's an empty line, continue
-            if (string.IsNullOrWhiteSpace(namesFromFile[i])) continue;
-            
             // Add each line to the list of names.
             names.Add(namesFromFile[i].ToUpper());
         }
+        
+        
+        // Extra methods tests:
+        
+        Debug.Log("Count: " + names.Count);
+        Debug.Log("Names contains \"JACK\":" + names.Contains("JACK"));
+        Debug.Log("Names contains \"LANNI\":" + names.Contains("LANNI"));
+
+        names.Insert(4520, "LANNI");
+
+        var indexOfLastLanni = 0;
+
+        for (int i = 0; i < names.Count; i++)
+        {
+            if (names[i] == "LANNI")
+                indexOfLastLanni = i;
+        }
+       
+        Debug.Log(names[4520]);
+        names.RemoveAt(indexOfLastLanni);
+        Debug.Log(names[4520]);
+
+
+
+        // Debug.Log("Successfully removed \"LANNI\": " + names.Remove("LANNI"));
+        // Debug.Log("Names contains\"LANNI\": " + names.Contains("LANNI"));
     }
 
     private void Update()
@@ -46,7 +68,7 @@ public class ListExample : MonoBehaviour
             display.text = "Not in the list.";
             
             // Loop through the entire list
-            for (var i = 0; i < names.Count; i++)
+            for (int i = 0; i < names.Count; i++)
             {
                 // If any of the names in the list match what in the input field,
                 // say it's in the list.

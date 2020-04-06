@@ -62,11 +62,13 @@ public class DirectionManager : MonoBehaviour
         UpdateLocation(currentLocation.wLocation);
     }
 
+    public SpriteRenderer imageToLoad;
     public void UpdateLocation(int locNum){
         currentLocation = locations[locNum];
 
         title.text = currentLocation.title;
         description.text = currentLocation.description;
+        imageToLoad.sprite = Resources.Load<Texture2D>(currentLocation.image);
 
         if(currentLocation.nLocation < 0){
             nButton.gameObject.SetActive(false);
