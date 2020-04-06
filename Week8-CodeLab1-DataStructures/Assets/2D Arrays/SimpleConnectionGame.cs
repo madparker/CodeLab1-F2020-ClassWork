@@ -70,7 +70,7 @@ public class SimpleConnectionGame : MonoBehaviour
     // you can add another piece.
     public bool ColumnFilled(int column)
     {
-        return IsEmpty(column, height - 1);
+        return !IsEmpty(column, height - 1);
     }
 
     // This function is used to add a piece to a column
