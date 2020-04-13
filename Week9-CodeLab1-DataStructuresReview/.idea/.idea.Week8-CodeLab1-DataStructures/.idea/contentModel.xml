@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\jack\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\jack\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Week8-CodeLab1-DataStructures.-1561080381.00" t="ExcludeRecursive" />
+    <e p="E:\Dropbox\Game Design\NYU\Teaching\Code Lab 1\CodeLab1-F2020-ClassWork\Week8-CodeLab1-DataStructures" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="2D Arrays" t="Include">
+          <e p="SeatingChartController.cs" t="Include" />
+          <e p="SimpleConnectionGame.cs" t="Include" />
+        </e>
+        <e p="Dictionary" t="Include">
+          <e p="DictionaryExample.cs" t="Include" />
+        </e>
+        <e p="HiddenObjectExample.cs" t="Include" />
+        <e p="List" t="Include">
+          <e p="ListExample.cs" t="Include" />
+          <e p="listOfNames.txt" t="Include" />
+        </e>
+        <e p="Stacks and Queues" t="Include">
+          <e p="StackAndQueueExample.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Week8-CodeLab1-DataStructures.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
