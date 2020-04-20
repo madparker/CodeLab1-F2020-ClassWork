@@ -15,4 +15,11 @@ public class NYUEmployee : NYUPerson
         this.deptName = deptName;
         this.salary = salary;
     }
+
+    public override string showRecord()
+    {
+        return base.showRecord() + "\n" +
+                   "Dept: " + deptName + "\n" +
+                   "Salary: " + salary;
+    }
 }

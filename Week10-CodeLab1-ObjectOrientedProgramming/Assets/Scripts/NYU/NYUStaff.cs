@@ -14,4 +14,10 @@ public class NYUStaff : NYUEmployee
         type = "NYU Staff";
         this.adminCode = adminCode;
     }
+
+    public override string showRecord()
+    {
+        return base.showRecord() + "\n" +
+                   "Code: " + adminCode;
+    }
 }
