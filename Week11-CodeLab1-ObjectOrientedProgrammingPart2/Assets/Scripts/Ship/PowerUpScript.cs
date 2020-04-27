@@ -19,7 +19,7 @@ public class PowerUpScript : MonoBehaviour
 
     private void Update()
     {
-        //if the powerUp is more than 10 units from startPos (ie, off the screen)
+        //if the powerUp is more than 20 units from startPos (ie, off the screen)
         if (Vector3.Distance(startPos, transform.position) > 20){
             transform.position = startPos; //reset to startPos
             GetComponent<Rigidbody2D>().velocity = Vector2.zero; //remove velocity

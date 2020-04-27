@@ -8,15 +8,15 @@ public class TripleShot : BaseAttack
     public override void Fire(Vector2 position)
     {
         //middle shot
-        base.Fire(transform.position);
+        base.Fire(position);
 
         //left shot
-        Vector2 pos = transform.position;
+        Vector2 pos = position;
         pos.x -= 0.5f;
         base.Fire(pos);
 
         //right shot
-        pos = transform.position;
+        pos = position;
         pos.x += 0.5f;
         base.Fire(pos);
     }

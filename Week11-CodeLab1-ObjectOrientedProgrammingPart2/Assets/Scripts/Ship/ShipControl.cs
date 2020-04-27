@@ -52,9 +52,16 @@ public class ShipControl : MonoBehaviour
         {
             Destroy(shield);
             shield = gameObject.AddComponent<BaseShield>();
-        } else if (Input.GetKeyDown(KeyCode.Q)){
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
             Destroy(shield);
             shield = gameObject.AddComponent<AbsorbShield>();
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            Destroy(shield);
+            shield = gameObject.AddComponent<TeleportShield>();
         }
 
         healthText.text = "Health: " + health; //update health display
