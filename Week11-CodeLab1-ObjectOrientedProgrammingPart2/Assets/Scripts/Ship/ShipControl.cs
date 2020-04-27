@@ -52,6 +52,9 @@ public class ShipControl : MonoBehaviour
         {
             Destroy(shield);
             shield = gameObject.AddComponent<BaseShield>();
+        } else if (Input.GetKeyDown(KeyCode.Q)){
+            Destroy(shield);
+            shield = gameObject.AddComponent<AbsorbShield>();
         }
 
         healthText.text = "Health: " + health; //update health display
@@ -76,10 +79,8 @@ public class ShipControl : MonoBehaviour
         if (shield != null) // if you have a shield
         {
             damageAmt = shield.AdjustDamage(damageAmt); //adjust the damage by the sheild amount
-
         }
 
         health -= damageAmt; //reduce helath by damage
-
     }
 }
