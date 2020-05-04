@@ -25,11 +25,11 @@ public class CameraDemo : MonoBehaviour
         {
             // 1. get mouse input?
             float horizontalMousePos = Input.GetAxis("Mouse X");
-            float verticalPos = Input.GetAxis("Mouse Y");
+            float verticalMousePos = Input.GetAxis("Mouse Y");
             //Debug.Log(horizontalMousePos); // print horizontal mouse, make sure it works
 
             // 2. use mouse input to rotate camera
-            Camera.main.transform.Rotate(-verticalPos * mouseMod, horizontalMousePos * mouseMod, 0f);
+            Camera.main.transform.Rotate(-verticalMousePos * mouseMod, horizontalMousePos * mouseMod, 0f);
 
             // 3. unroll the camera, we need to set it's Z angle to 0f, always
             // transform.eulerAngles.z = 0f; // Unity won't let you do it like this

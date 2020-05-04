@@ -6,7 +6,7 @@ using UnityEngine;
 // PURPOSE: this will make the thing look at a thing, forever
 
 //More info on Quaternions:
-//Unity Quaternions: https://unity3d.com/learn/tutorials/modules/intermediate/scripting/quaternions
+//Unity Quaternions: https://learn.unity.com/tutorial/quaternions#5c8945d0edbc2a14103553dc
 //General Quaternions: http://quaternions.online/index.html
 
 public class CameraLookFollow : MonoBehaviour
@@ -30,8 +30,8 @@ public class CameraLookFollow : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation( forward );
         // change the rotation based on quaternions...
 
-        // FOR A MORE MECHANICAL FEEL, LIKE A SECURITY CAMERA
-        // rotate towards the object at a rate of 30 degrees per second
+        //// FOR A MORE MECHANICAL FEEL, LIKE A SECURITY CAMERA
+        //// rotate towards the object at a rate of 30 degrees per second
         //transform.rotation = Quaternion.RotateTowards( transform.rotation, targetRotation, 30 * Time.deltaTime * timeMod);
 
         // FOR A MORE ORGANIC FEEL, eases out / dampens / accelerates
@@ -39,5 +39,6 @@ public class CameraLookFollow : MonoBehaviour
 
         // Visualize the line from this gameObject to lookTarget in debug Scene view
         Debug.DrawLine(transform.position, lookTarget.position, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * 10f, Color.blue);
     }
 }
