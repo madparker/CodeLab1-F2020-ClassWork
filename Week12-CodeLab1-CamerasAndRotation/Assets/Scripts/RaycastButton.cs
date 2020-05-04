@@ -19,7 +19,7 @@ public class RaycastButton : MonoBehaviour
             RaycastHit myRayHitInfo = new RaycastHit();
 
             // STEP 3: actually shoot raycast now!
-            if ( Physics.Raycast( myRay, out myRayHitInfo, 1000f ) ) {
+            if ( Physics.Raycast( myRay, out myRayHitInfo, 100f ) ) {
                 // STEP 5: do something with the raycast!
                 // actually, the way we've coded this, we can now click on ANYTHING with a collider
                 // Destroy( myRayHitInfo.collider.gameObject );
@@ -28,7 +28,7 @@ public class RaycastButton : MonoBehaviour
                 myRayHitInfo.transform.Translate( 0f, 3f, 0f);
 
                 // change color when I click on it
-                myRayHitInfo.transform.GetComponent<Renderer>().material.color = new Color(1f, 0f, 0f, 1f);
+                myRayHitInfo.transform.GetComponent<Renderer>().material.color = new Color(1f, 0f, 1f, 1f);
             }
         }
     }
