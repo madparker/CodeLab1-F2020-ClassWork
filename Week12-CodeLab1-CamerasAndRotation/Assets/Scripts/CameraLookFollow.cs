@@ -4,6 +4,11 @@ using UnityEngine;
 
 // USAGE: put this on a thing that looks at stuff (ideally, a camera)
 // PURPOSE: this will make the thing look at a thing, forever
+
+//More info on Quaternions:
+//Unity Quaternions: https://unity3d.com/learn/tutorials/modules/intermediate/scripting/quaternions
+//General Quaternions: http://quaternions.online/index.html
+
 public class CameraLookFollow : MonoBehaviour
 {
     public Transform lookTarget; // what I should look at; assign in Inspector!
