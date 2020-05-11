@@ -12,12 +12,15 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         Reset();
     }
 
     public void Reset()
     {
+        if(rb == null){
+            rb = GetComponent<Rigidbody2D>();
+        }
+
         transform.position = new Vector2(
             Random.Range(-xRange, xRange),
             10f);
@@ -28,6 +31,8 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(transform.position.y < -10){
+            EnemyPool.instance.Push(gameObject);
+        }
     }
 }
