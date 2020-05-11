@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class ObjectPool : MonoBehaviour
 {
     //Stack for holding old GameObjects
-    //FIFO - First In First Out
+    //LIFO - Last In First Out
     protected Stack<GameObject> pool = new Stack<GameObject>();
 
     //Get a GameObject

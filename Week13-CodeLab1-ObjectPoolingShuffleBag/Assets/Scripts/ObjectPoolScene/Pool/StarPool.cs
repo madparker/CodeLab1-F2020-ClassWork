@@ -20,7 +20,7 @@ public class StarPool : ObjectPool
         }
     }
 
-    //ovveride abstract method, make it return a new star
+    //override abstract method, make it return a new star
     protected override GameObject GetNewObject(){
         return Instantiate<GameObject>(star);
     }

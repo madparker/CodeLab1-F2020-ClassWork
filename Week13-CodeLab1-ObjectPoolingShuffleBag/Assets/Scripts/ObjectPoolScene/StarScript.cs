@@ -9,7 +9,7 @@ public class StarScript : MonoBehaviour
     const float MIN_SPEED = 0.01f; //min speed
     const float MAX_SPEED = 0.05f; //max speed
     const float MAX_Y = 10; //where to start star
-    const float MIN_Y = -10; //wher to recycle star
+    const float MIN_Y = -10; //where to recycle star
 
     float speed;
 
